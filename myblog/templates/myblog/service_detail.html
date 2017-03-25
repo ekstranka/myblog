@@ -1,0 +1,18 @@
+{% extends 'myblog/base.html' %}
+
+{% block content %}
+
+        <div class="service">
+            <h1>{{ sluzba.title }}</h1>
+            <p>{{ sluzba.text }}</p>
+        </div>
+    
+        <div class="dotaz">
+          <h2>Zaslat dotaz</h2>
+          <form method="POST" class="dotaz-form">{% csrf_token %}
+           {{ form.as_p }}
+           <button type="submit"><b>Odeslat zprávu</b></button>
+          </form>
+        </div>
+    
+{% endblock content %}

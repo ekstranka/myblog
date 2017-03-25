@@ -1,0 +1,13 @@
+{% extends 'myblog/base.html' %}
+
+{% block content %}
+   
+    {% for servis in service %}
+        <div class="services">
+            <h2><a href="{% url 'service_detail' title=servis.title %}">{{ servis.title }}</a></h2>
+            <p>{{ servis.subtitle }}</p>
+        </div>
+    {% endfor %}
+    
+    
+{% endblock content %}

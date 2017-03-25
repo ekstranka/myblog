@@ -1,0 +1,35 @@
+{% extends 'myblog/base.html' %}
+
+{% block content %}
+        <div class="service">
+            <p style="font-size: 125%; margin-top:10px;"><b>Mgr. Eliška Ketzerová, LL.M., advokátka</b></p><br>
+            <p>Vlkonice 91, 384 86 Vacov</p>
+            <p>Tel.: +420 604 892 222 </p>
+            <p>Email: <a href="mailto:ek.outlook@seznam.cz">ek.outlook@seznam.cz</a></p>
+            <div id="map" style="width:350px;height:350px;background:yellow; margin-top: 25px;"></div>
+              <script>
+                function initMap() {
+                  var uluru = {lat: 49.1350966, lng: 13.7259927};
+                  var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 17,
+                    center: uluru
+                  });
+                  var marker = new google.maps.Marker({
+                    position: uluru,
+                    map: map
+                  });
+                }
+              </script>
+              <script async defer
+              src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBacc2EUFVtvINTE4BVMXaUNmHlOOvSo9g&callback=initMap">
+              </script>
+        </div>
+        
+        <div class="dotaz">
+          <h2>Zaslat dotaz</h2>
+          <form method="POST" class="dotaz-form">{% csrf_token %}
+           {{ form.as_p }}
+           <button type="submit"><b>Odeslat zprávu</b></button>
+          </form>
+        </div>
+{% endblock content %}
